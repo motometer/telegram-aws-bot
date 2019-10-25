@@ -1,0 +1,3 @@
+telegram:
+  api: 'https://api.telegram.org'
+  token: ${TELEGRAM_TOKEN}
