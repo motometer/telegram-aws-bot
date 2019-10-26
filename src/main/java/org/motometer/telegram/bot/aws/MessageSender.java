@@ -1,4 +1,4 @@
-package org.motometer.bot.telegram.publisher;
+package org.motometer.telegram.bot.aws;
 
 import lombok.RequiredArgsConstructor;
 import org.motometer.telegram.bot.Bot;
