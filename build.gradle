@@ -31,7 +31,7 @@ configurations {
 }
 
 dependencies {
-	implementation 'org.motometer.telegram:telegram-bot-core:0.0.1-SNAPSHOT'
+	implementation 'org.motometer.telegram:telegram-bot-client:0.0.1-SNAPSHOT'
 	implementation 'com.amazonaws:aws-lambda-java-core:1.2.0'
 	implementation 'com.amazonaws:aws-lambda-java-events:2.2.6'
 
