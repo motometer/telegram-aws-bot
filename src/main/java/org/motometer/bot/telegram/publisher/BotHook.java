@@ -20,7 +20,7 @@ public class BotHook implements RequestHandler<APIGatewayProxyRequestEvent, APIG
 
         final String body = input.getBody();
 
-        bot.createWebHookListener(new MessageSender(bot))
+        bot.adaptListener(new MessageSender(bot))
             .onEvent(body);
 
         logger.log("Successfully handled request");

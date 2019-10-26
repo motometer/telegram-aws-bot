@@ -14,8 +14,7 @@ ext {
 repositories {
 	mavenLocal()
 	mavenCentral()
-	jcenter()
-	maven { url "https://dl.bintray.com/motometer/mvn" }
+	maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
 }
 
 sourceSets {
