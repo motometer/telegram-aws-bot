@@ -1,4 +1,4 @@
-package org.motometer.bot.telegram.publisher;
+package org.motometer.telegram.bot.aws;
 
 import org.junit.jupiter.api.Test;
 import org.motometer.telegram.bot.api.ChatType;
