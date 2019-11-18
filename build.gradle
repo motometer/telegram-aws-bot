@@ -27,12 +27,9 @@ configurations {
 }
 
 dependencies {
-	implementation 'org.motometer.telegram:telegram-bot-client:0.0.1-SNAPSHOT'
+	implementation 'org.motometer.telegram:telegram-bot-api:0.0.7-SNAPSHOT'
 	implementation 'com.amazonaws:aws-lambda-java-core:1.2.0'
 	implementation 'com.amazonaws:aws-lambda-java-events:2.2.6'
-
-	compileOnly 'org.projectlombok:lombok:1.18.10'
-	annotationProcessor 'org.projectlombok:lombok:1.18.10'
 
 	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
 	testImplementation 'org.assertj:assertj-core:3.13.2'
