@@ -1,8 +1,9 @@
 plugins {
 	id 'java'
+	id 'maven'
 }
 
-group 'org.motometer.bot'
+group 'org.motometer.telegram'
 version '0.0.1-SNAPSHOT'
 
 sourceCompatibility = 1.8
@@ -27,7 +28,7 @@ configurations {
 }
 
 dependencies {
-	implementation 'org.motometer.telegram:telegram-bot-api:0.0.7-SNAPSHOT'
+	implementation 'org.motometer.telegram:telegram-bot-core:0.0.1-SNAPSHOT'
 	implementation 'com.amazonaws:aws-lambda-java-core:1.2.0'
 	implementation 'com.amazonaws:aws-lambda-java-events:2.2.6'
 
