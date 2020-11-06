@@ -9,9 +9,11 @@ import lombok.RequiredArgsConstructor;
 public class UpdateListener implements WebHookListener {
 
   private final LambdaLogger log;
+  private final PostgresRepository postgresRepository;
 
   @Override
   public void onUpdate(final String update) {
     log.log("Received update: " + update);
+    postgresRepository.saveUpdate(update);
   }
 }

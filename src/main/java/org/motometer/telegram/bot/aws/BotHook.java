@@ -1,5 +1,6 @@
 package org.motometer.telegram.bot.aws;
 
+import org.motometer.telegram.bot.aws.service.PostgresRepository;
 import org.motometer.telegram.bot.aws.service.UpdateListener;
 
 import com.amazonaws.services.lambda.runtime.Context;
@@ -15,7 +16,13 @@ public class BotHook implements RequestHandler<APIGatewayProxyRequestEvent, APIG
 
     logger.log("Received request with url =" + input.getPath());
 
-    final UpdateListener updateListener = UpdateListener.of(logger);
+    final PostgresRepository repository = new PostgresRepository(
+      System.getenv("JDBC_URL"),
+      System.getenv("DB_USERNAME"),
+      System.getenv("DB_PASSWORD")
+    );
+
+    final UpdateListener updateListener = UpdateListener.of(logger, repository);
 
     updateListener.onUpdate(input.getBody());
 
