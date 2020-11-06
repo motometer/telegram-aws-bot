@@ -1,25 +1,13 @@
 package org.motometer.telegram.bot.aws;
 
+import org.motometer.telegram.bot.aws.service.UpdateListener;
+
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
 
-import java.util.Collection;
-import java.util.ServiceLoader;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-
-import org.motometer.telegram.bot.core.api.WebHookListener;
-
 public class BotHook implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
-
-  private final Collection<WebHookListener> listeners;
-
-  public BotHook() {
-    final var load = ServiceLoader.load(WebHookListener.class);
-    listeners = StreamSupport.stream(load.spliterator(), false).collect(Collectors.toList());
-  }
 
   @Override
   public APIGatewayProxyResponseEvent handleRequest(final APIGatewayProxyRequestEvent input, final Context context) {
@@ -27,7 +15,9 @@ public class BotHook implements RequestHandler<APIGatewayProxyRequestEvent, APIG
 
     logger.log("Received request with url =" + input.getPath());
 
-    listeners.forEach(listener -> listener.onEvent(input.getBody()));
+    final UpdateListener updateListener = UpdateListener.of(logger);
+
+    updateListener.onUpdate(input.getBody());
 
     logger.log("Request complete");
 
