@@ -37,7 +37,7 @@ public class CommandListener implements WebHookListener {
 
           final String stats = statsByChatId.stream()
             .map(v -> String.join(",", v.getUserName(), String.valueOf(v.getMessageCount())))
-            .collect(Collectors.joining());
+            .collect(Collectors.joining("\n"));
 
           log.log("Sending a message: " + stats);
           final ImmutableSendMessage sendMessage = ImmutableSendMessage.of(chat.id(), stats);
