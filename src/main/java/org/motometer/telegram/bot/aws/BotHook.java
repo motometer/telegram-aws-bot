@@ -22,7 +22,7 @@ public class BotHook implements RequestHandler<APIGatewayProxyRequestEvent, APIG
       System.getenv("DB_PASSWORD")
     );
 
-    final UpdateListener updateListener = UpdateListener.of(logger, repository);
+    final UpdateListener updateListener = UpdateListener.of(repository);
 
     updateListener.onUpdate(input.getBody());
 
