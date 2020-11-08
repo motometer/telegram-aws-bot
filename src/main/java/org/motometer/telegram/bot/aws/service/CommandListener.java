@@ -9,6 +9,7 @@ import org.motometer.telegram.bot.api.Chat;
 import org.motometer.telegram.bot.api.ImmutableSendMessage;
 import org.motometer.telegram.bot.api.Update;
 
+import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.google.gson.Gson;
 
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,7 @@ public class CommandListener implements WebHookListener {
   private final Bot bot;
   private final Gson gson;
   private final PostgresRepository postgresRepository;
+  private final LambdaLogger log;
 
   @Override
   public void onUpdate(final String update) {
@@ -37,9 +39,12 @@ public class CommandListener implements WebHookListener {
             .map(v -> String.join(",", v.getUserName(), String.valueOf(v.getMessageCount())))
             .collect(Collectors.joining());
 
+          log.log("Sending a message: " + stats);
           final ImmutableSendMessage sendMessage = ImmutableSendMessage.of(chat.id(), stats);
 
           bot.sendMessage(sendMessage);
+
+          log.log("Message has been sent");
         }
       });
   }

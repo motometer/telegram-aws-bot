@@ -38,7 +38,7 @@ public class BotHook implements RequestHandler<APIGatewayProxyRequestEvent, APIG
 
     final WebHookListener updateListener = new ExceptionSafeListener(UpdateListener.of(repository), logger);
     final WebHookListener listener = new ExceptionSafeListener(
-      new CommandListener(bot, createGson(), repository),
+      new CommandListener(bot, createGson(), repository, logger),
       logger
     );
 
