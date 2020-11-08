@@ -32,6 +32,7 @@ dependencies {
 	implementation 'com.amazonaws:aws-lambda-java-events:2.2.6'
 	implementation 'ch.qos.logback:logback-classic:1.2.3'
 	implementation 'org.postgresql:postgresql:42.2.18'
+	implementation 'org.motometer.telegram:telegram-bot-client:0.0.1-SNAPSHOT'
 
 	compileOnly 'org.projectlombok:lombok:1.18.10'
 	annotationProcessor 'org.projectlombok:lombok:1.18.10'
