@@ -17,7 +17,7 @@ public class ExceptionSafeListener implements WebHookListener {
     try {
       listener.onUpdate(update);
     } catch (RuntimeException ex) {
-      log.log(ex.getMessage());
+      log.log("ERROR: " + ex.getMessage());
     }
   }
 }
